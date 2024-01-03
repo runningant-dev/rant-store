@@ -20,8 +20,4 @@ export function arrayCompare(path: string, left: any[], right: any[], result: Ch
         // simple compare
         simpleArrayCompare(path, left, right, result);
     }
-
-    for(let l of left) {
-
-    }
 }
