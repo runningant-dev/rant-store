@@ -1,0 +1,19 @@
+{
+  "name": "rant-store",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./js/index.js",
+  "types": "./js/index.d.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Edwards",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^8.11.0",
+    "rant-utils": "github:runningant-dev/rant-utils",
+    "sqlite": "^4.2.1",
+    "sqlite3": "^5.1.6"
+  }
+}
