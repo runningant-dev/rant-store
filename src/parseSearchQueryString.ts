@@ -30,6 +30,7 @@ export function parseSearchQueryString(qry: string, vals?: any) {
         const valid = "abcdefghijklmnopqrstuvwxyz_.@1234567890";
         return (valid.indexOf(c) >= 0);
     }
+
     function getComparator() {
         let s = qry.substring(i, i+2);
         if (
@@ -58,6 +59,7 @@ export function parseSearchQueryString(qry: string, vals?: any) {
 
         return "";
     }
+    
     function getOperator() {
         let s = qry.substring(i, i+2);
         if (

@@ -60,9 +60,6 @@ export interface Store {
         delete?: boolean;
         user?: UserContext;
     }, changeTracking: TrackingOptions) => void;
-    containerExists: (options: {
-        name: string;
-    }) => Promise<boolean>;
     get: (options: {
         container: string;
         key: string;
