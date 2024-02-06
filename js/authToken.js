@@ -7,7 +7,7 @@ function createAuthToken(user) {
     function add(name, val) {
         items.push(encodeURIComponent(name) + "=" + encodeURIComponent(val));
     }
-    add("key", user.key);
+    add("id", user.id);
     add("name", user.name.first + " " + user.name.last);
     add("roles", user.roles.join("|"));
     const val = items.join("&") + items.join("&");

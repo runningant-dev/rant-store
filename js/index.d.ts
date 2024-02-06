@@ -9,7 +9,7 @@ export declare const enum DataType {
     number = 1
 }
 export declare type ObjectDef = any & {
-    key?: string;
+    id?: string;
 };
 export interface SensitivePropDef {
     name: string;
@@ -43,7 +43,7 @@ export interface TrackingOptions {
     track: boolean;
 }
 export declare type UserContext = ObjectDef;
-export declare type SearchReturnType = "keys" | "array" | "map";
+export declare type SearchReturnType = "ids" | "array" | "map";
 export interface SearchOptions {
     container: string;
     qry: Query | string;
@@ -62,7 +62,7 @@ export interface Store {
     }, changeTracking: TrackingOptions) => void;
     get: (options: {
         container: string;
-        key: string;
+        id: string;
     }) => Promise<any>;
     set: (options: {
         container: string;
@@ -71,7 +71,7 @@ export interface Store {
     }, changeTracking: TrackingOptions) => Promise<any>;
     del: (options: {
         container: string;
-        key: string;
+        id: string;
     }, changeTracking: TrackingOptions) => Promise<any>;
     setSchema: (options: SchemaDef, changeTracking: TrackingOptions) => Promise<any>;
     getSchema: (options: {

@@ -11,8 +11,8 @@ export function arrayCompare(path: string, left: any[], right: any[], result: Ch
     if (left.length <= 0 && right.length <= 0) return;
 
     if (
-        (left.length > 0 && isObject(left[0]) && left[0].key)
-        || (right.length > 0 && isObject(right[0] && right[0].key))
+        (left.length > 0 && isObject(left[0]) && left[0].id)
+        || (right.length > 0 && isObject(right[0] && right[0].id))
     ) {
         // compare a keyed array
         keyedArrayCompare(path, left, right, result);

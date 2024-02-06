@@ -16,9 +16,7 @@ export const enum DataType {
 }
 
 export type ObjectDef = any & {
-    // key: string,
-    // value?: any,
-    key?: string,
+    id?: string,
 }
 
 export interface SensitivePropDef {
@@ -66,13 +64,13 @@ export interface TrackingOptions {
 
 export type UserContext = ObjectDef;
 
-export type SearchReturnType = "keys" | "array" | "map";
+export type SearchReturnType = "ids" | "array" | "map";
 
 export interface SearchOptions {
     container: string,
     qry: Query | string,
     params?: any,
-    returnType?: SearchReturnType, // return full objects, otherwise by default return just the keys
+    returnType?: SearchReturnType, // return full objects, otherwise by default return just the ids
 }
 
 export interface Store {
@@ -94,7 +92,7 @@ export interface Store {
 
     get: (options: {
         container: string, 
-        key: string
+        id: string
     }) => Promise<any>,
 
     set: (
@@ -109,7 +107,7 @@ export interface Store {
     del: (
         options: {
             container: string,
-            key: string,
+            id: string,
         },
         changeTracking: TrackingOptions,
     ) => Promise<any>,

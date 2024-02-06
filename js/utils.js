@@ -6,7 +6,7 @@ function firstObject(array) {
     const item = (0, rant_utils_1.first)(array);
     if (item) {
         const result = JSON.parse(item.value);
-        result.key = item.key;
+        result.id = item.id;
         return result;
     }
     return undefined;

@@ -33,7 +33,7 @@ export interface Change {
 
     container?: string,
     
-    key?: string,
+    id?: string,
 
     prop?: string,
     value?: any, 
@@ -45,9 +45,9 @@ export interface Change {
 }
 
 export interface ChangeLogItem {
-    id: number,
+    change_id: number,
     container: string,
-    key: string,
+    id: string,
     change: string, // json
     timeStamp: string,
 }

@@ -1,5 +1,5 @@
 export interface AuthToken {
-    key: string;
+    id: string;
     name: string;
     roles: string[];
 }

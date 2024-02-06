@@ -9,8 +9,8 @@ function keyedArrayCompare(path, left, right, result) {
         const result = {};
         for (let i = 0; i < arr.length; i++) {
             const o = arr[i];
-            if (result[o.key]) {
-                // if we hit a duplicate key then can't reliably compare, so just replace the whole array
+            if (result[o.id]) {
+                // if we hit a duplicate id then can't reliably compare, so just replace the whole array
                 result.push({
                     type: "prop-update",
                     prop: path,
@@ -18,7 +18,7 @@ function keyedArrayCompare(path, left, right, result) {
                 });
                 return;
             }
-            result[o.key] = i;
+            result[o.id] = i;
         }
         return result;
     }
@@ -30,11 +30,11 @@ function keyedArrayCompare(path, left, right, result) {
     // deleted items will be in left but no longer in right
     for (let i = 0; i < left.length; i++) {
         const l = left[i];
-        const iRightIndex = iRight[l.key];
+        const iRightIndex = iRight[l.id];
         if (iRightIndex === undefined) {
             result.push({
                 type: "array-delete",
-                key: l.key,
+                id: l.id,
             });
             hadDeletions = true;
         }
@@ -45,7 +45,7 @@ function keyedArrayCompare(path, left, right, result) {
             if (changes.length > 0) {
                 result.push({
                     type: "array-update",
-                    key: r.key,
+                    id: r.id,
                     value: changes,
                 });
             }
@@ -55,11 +55,11 @@ function keyedArrayCompare(path, left, right, result) {
     const order = [];
     for (let i = 0; i < right.length; i++) {
         const r = right[i];
-        const leftIndex = iLeft[r.key];
-        const rightIndex = iRight[r.key];
+        const leftIndex = iLeft[r.id];
+        const rightIndex = iRight[r.id];
         if (!needsSorting && leftIndex !== rightIndex)
             needsSorting = true;
-        order.push(r.key);
+        order.push(r.id);
         if (leftIndex === undefined) {
             result.push({
                 type: "array-add",

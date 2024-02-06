@@ -1,7 +1,7 @@
 import { hash } from "rant-utils";
 
 export interface AuthToken {
-    key: string,
+    id: string,
     name: string,
     roles: string[],
 }
@@ -13,7 +13,7 @@ export function createAuthToken(user: any) {
 		items.push(encodeURIComponent(name) + "=" + encodeURIComponent(val));
 	}
 
-	add("key", user.key);
+	add("id", user.id);
 	add("name", user.name.first + " " + user.name.last);
 	add("roles", user.roles.join("|"));
 

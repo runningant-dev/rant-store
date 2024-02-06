@@ -8,8 +8,8 @@ export function keyedArrayCompare(path: string, left: any[], right: any[], resul
 		const result: any = {};
 		for(let i=0;i<arr.length;i++) {
 			const o = arr[i];
-			if (result[o.key]) {
-				// if we hit a duplicate key then can't reliably compare, so just replace the whole array
+			if (result[o.id]) {
+				// if we hit a duplicate id then can't reliably compare, so just replace the whole array
 				result.push({
 					type: "prop-update",
 					prop: path,
@@ -17,7 +17,7 @@ export function keyedArrayCompare(path: string, left: any[], right: any[], resul
 				});
 				return;
 			}
-			result[o.key] = i;
+			result[o.id] = i;
 		}
 		return result;
 	}
@@ -32,11 +32,11 @@ export function keyedArrayCompare(path: string, left: any[], right: any[], resul
 	for(let i=0;i<left.length;i++) {
 		const l = left[i];
 
-		const iRightIndex = iRight[l.key as string];
+		const iRightIndex = iRight[l.id as string];
 		if (iRightIndex === undefined) {
 			result.push({
 				type: "array-delete",
-				key: l.key,
+				id: l.id,
 			});
 			hadDeletions = true;
 
@@ -47,7 +47,7 @@ export function keyedArrayCompare(path: string, left: any[], right: any[], resul
 			if (changes.length > 0) {
 				result.push({
 					type: "array-update",
-					key: r.key,
+					id: r.id,
 					value: changes,
 				});
 			}
@@ -60,12 +60,12 @@ export function keyedArrayCompare(path: string, left: any[], right: any[], resul
 	for(let i=0;i<right.length;i++) {
 		const r = right[i];
 
-		const leftIndex = iLeft[r.key as string];
-		const rightIndex = iRight[r.key as string];
+		const leftIndex = iLeft[r.id as string];
+		const rightIndex = iRight[r.id as string];
 
 		if (!needsSorting && leftIndex !== rightIndex) needsSorting = true;
 
-		order.push(r.key);
+		order.push(r.id);
 
 		if (leftIndex === undefined) {
 			result.push({

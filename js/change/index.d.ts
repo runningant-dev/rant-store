@@ -6,7 +6,7 @@ export declare type ChangeType = ContainerChangeType | ObjectChangeType | ArrayC
 export interface Change {
     type: ChangeType;
     container?: string;
-    key?: string;
+    id?: string;
     prop?: string;
     value?: any;
     changes?: Change[];
@@ -14,9 +14,9 @@ export interface Change {
     toIndex?: number;
 }
 export interface ChangeLogItem {
-    id: number;
+    change_id: number;
     container: string;
-    key: string;
+    id: string;
     change: string;
     timeStamp: string;
 }
