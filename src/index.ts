@@ -129,8 +129,10 @@ export interface Store {
     searchAll: (queries: SearchOptions[]) => Promise<any>,
 
     getChanges: (options: {
-        since?: Date,
         from?: number, // id
+
+        // may remove datetime - not as precise as from: id and can't think of why would use it
+        since?: string, // e.g. 2024-02-06T22:59:42.733Z - from rant-utils/formatDateTime()
     }) => Promise<any>,
 
     merge: (options: {
