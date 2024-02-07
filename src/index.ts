@@ -6,8 +6,6 @@ export * from "./authToken";
 export * from "./parseSearchQueryString";
 export * from "./sensitiveDataCleaner";
 
-export * from "./utils";
-
 export * from "./change";
 
 export const enum DataType {
@@ -71,6 +69,9 @@ export interface SearchOptions {
     qry: Query | string,
     params?: any,
     returnType?: SearchReturnType, // return full objects, otherwise by default return just the ids
+
+    // by default sensitive data is cleaned out
+    includeSensitive?: boolean,
 }
 
 export interface Store {
@@ -92,7 +93,10 @@ export interface Store {
 
     get: (options: {
         container: string, 
-        id: string
+        id: string,
+
+        // by default sensitive data is cleaned out
+        includeSensitive?: boolean,
     }) => Promise<any>,
 
     set: (

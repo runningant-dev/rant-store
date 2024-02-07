@@ -2,7 +2,6 @@ import { Change } from "./change";
 export * from "./authToken";
 export * from "./parseSearchQueryString";
 export * from "./sensitiveDataCleaner";
-export * from "./utils";
 export * from "./change";
 export declare const enum DataType {
     text = 0,
@@ -49,6 +48,7 @@ export interface SearchOptions {
     qry: Query | string;
     params?: any;
     returnType?: SearchReturnType;
+    includeSensitive?: boolean;
 }
 export interface Store {
     close: () => void;
@@ -63,6 +63,7 @@ export interface Store {
     get: (options: {
         container: string;
         id: string;
+        includeSensitive?: boolean;
     }) => Promise<any>;
     set: (options: {
         container: string;
@@ -81,8 +82,8 @@ export interface Store {
     search: (options: SearchOptions) => Promise<any>;
     searchAll: (queries: SearchOptions[]) => Promise<any>;
     getChanges: (options: {
-        since?: Date;
         from?: number;
+        since?: string;
     }) => Promise<any>;
     merge: (options: {
         changes: Change[];

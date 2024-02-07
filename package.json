@@ -11,9 +11,6 @@
   "author": "Joel Edwards",
   "license": "MIT",
   "dependencies": {
-    "pg": "^8.11.0",
-    "rant-utils": "^0.0.1",
-    "sqlite": "^4.2.1",
-    "sqlite3": "^5.1.6"
+    "rant-utils": "^0.0.1"
   }
 }
