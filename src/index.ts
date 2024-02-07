@@ -1,3 +1,4 @@
+import { AuthToken } from "./authToken";
 import { Change } from "./change";
 
 export * from "./authToken";
@@ -60,8 +61,6 @@ export interface TrackingOptions {
     track: boolean,
 }
 
-export type UserContext = ObjectDef;
-
 export type SearchReturnType = "ids" | "array" | "map";
 
 export interface SearchOptions {
@@ -87,7 +86,7 @@ export interface Store {
         options: ContainerDef & {
             recreate?: boolean,
             delete?: boolean,
-            user?: UserContext,
+            authToken?: AuthToken,
         },
         changeTracking: TrackingOptions,
     ) => void,
@@ -105,7 +104,7 @@ export interface Store {
         options: {
             container: string, 
             object: ObjectDef,
-            user?: UserContext,
+            authToken?: AuthToken,
         },
         changeTracking: TrackingOptions,
     ) => Promise<any>,

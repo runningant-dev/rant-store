@@ -1,3 +1,4 @@
+import { AuthToken } from "./authToken";
 import { Change } from "./change";
 export * from "./authToken";
 export * from "./parseSearchQueryString";
@@ -41,7 +42,6 @@ export declare type Query = Expression[];
 export interface TrackingOptions {
     track: boolean;
 }
-export declare type UserContext = ObjectDef;
 export declare type SearchReturnType = "ids" | "array" | "map";
 export interface SearchOptions {
     container: string;
@@ -58,7 +58,7 @@ export interface Store {
     setContainer: (options: ContainerDef & {
         recreate?: boolean;
         delete?: boolean;
-        user?: UserContext;
+        authToken?: AuthToken;
     }, changeTracking: TrackingOptions) => void;
     get: (options: {
         container: string;
@@ -68,7 +68,7 @@ export interface Store {
     set: (options: {
         container: string;
         object: ObjectDef;
-        user?: UserContext;
+        authToken?: AuthToken;
     }, changeTracking: TrackingOptions) => Promise<any>;
     del: (options: {
         container: string;
