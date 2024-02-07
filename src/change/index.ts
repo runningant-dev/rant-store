@@ -1,7 +1,7 @@
 
 export type ContainerChangeType = 
     "container-set" // value (same options sent to setContainer)
-    | "container-set-schema" // value (same options for setSchema)
+    // | "container-set-schema" // value (same options for setSchema)
     ;
 
 export type ObjectChangeType = 

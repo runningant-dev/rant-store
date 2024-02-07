@@ -118,15 +118,6 @@ export interface Store {
         changeTracking: TrackingOptions,
     ) => Promise<any>,
 
-    // setSchema: (
-    //     options: SchemaDef,
-    //     changeTracking: TrackingOptions,
-    // ) => Promise<any>,
-
-    // getSchema: (options: {
-    //     name: string,
-    // }) => Promise<any>,
-
     reset: (options: {
 
     }) => any,
