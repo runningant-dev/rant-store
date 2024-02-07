@@ -74,10 +74,6 @@ export interface Store {
         container: string;
         id: string;
     }, changeTracking: TrackingOptions) => Promise<any>;
-    setSchema: (options: SchemaDef, changeTracking: TrackingOptions) => Promise<any>;
-    getSchema: (options: {
-        name: string;
-    }) => Promise<any>;
     reset: (options: {}) => any;
     search: (options: SearchOptions) => Promise<any>;
     searchAll: (queries: SearchOptions[]) => Promise<any>;

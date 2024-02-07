@@ -1,4 +1,4 @@
-export declare type ContainerChangeType = "container-set" | "container-set-schema";
+export declare type ContainerChangeType = "container-set";
 export declare type ObjectChangeType = "object-add" | "object-delete" | "object-update";
 export declare type ArrayChangeType = "array-add" | "array-update" | "array-delete" | "array-order";
 export declare type PropChangeType = "prop-add" | "prop-update" | "prop-delete" | "prop-rename";
