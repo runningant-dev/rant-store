@@ -10,26 +10,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sensitiveDataCleaner = void 0;
-function sensitiveDataCleaner(store, hasRole, container) {
+function sensitiveDataCleaner(store, hasRole, schema) {
     return __awaiter(this, void 0, void 0, function* () {
-        const schema = yield store.getSchema({ name: container });
         const cleaner = (obj) => {
             // have to first cut out sensitive data before sending
-            for (let s of schema.sensitive) {
-                // does the user have role required for this data?
-                if (hasRole(s.role))
-                    continue;
-                const parts = s.name.split(".");
-                let o = obj;
-                for (let i = 0; i < parts.length; i++) {
-                    const p = parts[i];
-                    if (!o)
-                        break;
-                    if (i == (parts.length - 1)) {
-                        delete o[p];
-                    }
-                    else {
-                        o = o[p];
+            if (schema.sensitive) {
+                for (let s of schema.sensitive) {
+                    // does the user have role required for this data?
+                    if (hasRole(s.role))
+                        continue;
+                    const parts = s.name.split(".");
+                    let o = obj;
+                    for (let i = 0; i < parts.length; i++) {
+                        const p = parts[i];
+                        if (!o)
+                            break;
+                        if (i == (parts.length - 1)) {
+                            delete o[p];
+                        }
+                        else {
+                            o = o[p];
+                        }
                     }
                 }
             }

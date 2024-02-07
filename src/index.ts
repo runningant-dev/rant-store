@@ -24,7 +24,7 @@ export interface SensitivePropDef {
 
 export interface SchemaDef {
     name: string,
-    searchWithin?: PropDef[],
+    indexes?: PropDef[],
     sensitive?: SensitivePropDef[],
 }
 
