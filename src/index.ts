@@ -70,8 +70,9 @@ export interface SearchOptions {
     params?: any,
     returnType?: SearchReturnType, // return full objects, otherwise by default return just the ids
 
-    // by default sensitive data is cleaned out
-    includeSensitive?: boolean,
+    // by default sensitive data is cleaned out because no roles are provided
+    // but if roles available they will be checked against the sensitive data specified on the container attributes
+    roles?: string[],
 }
 
 export interface Store {
@@ -95,8 +96,9 @@ export interface Store {
         container: string, 
         id: string,
 
-        // by default sensitive data is cleaned out
-        includeSensitive?: boolean,
+        // by default sensitive data is cleaned out because no roles are provided
+        // but if roles available they will be checked against the sensitive data specified on the container attributes
+        roles?: string[],
     }) => Promise<any>,
 
     set: (

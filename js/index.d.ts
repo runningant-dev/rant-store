@@ -48,7 +48,7 @@ export interface SearchOptions {
     qry: Query | string;
     params?: any;
     returnType?: SearchReturnType;
-    includeSensitive?: boolean;
+    roles?: string[];
 }
 export interface Store {
     close: () => void;
@@ -63,7 +63,7 @@ export interface Store {
     get: (options: {
         container: string;
         id: string;
-        includeSensitive?: boolean;
+        roles?: string[];
     }) => Promise<any>;
     set: (options: {
         container: string;
