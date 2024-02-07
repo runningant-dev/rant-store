@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sensitiveDataCleaner = void 0;
-function sensitiveDataCleaner(store, hasRole, schema) {
+exports.pruneSensitiveData = void 0;
+function pruneSensitiveData(store, schema, hasRole) {
     return __awaiter(this, void 0, void 0, function* () {
-        const cleaner = (obj) => {
+        const prune = (obj) => {
             // have to first cut out sensitive data before sending
             if (schema.sensitive) {
                 for (let s of schema.sensitive) {
@@ -37,10 +37,9 @@ function sensitiveDataCleaner(store, hasRole, schema) {
             return obj;
         };
         return {
-            schema,
-            cleaner,
+            prune,
             isCleanRequired: (schema && schema.sensitive && schema.sensitive.length > 0),
         };
     });
 }
-exports.sensitiveDataCleaner = sensitiveDataCleaner;
+exports.pruneSensitiveData = pruneSensitiveData;

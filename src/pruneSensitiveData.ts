@@ -1,8 +1,8 @@
 import { SchemaDef, Store } from ".";
 
-export async function sensitiveDataCleaner(store: Store, hasRole: (role: string) => boolean, schema: SchemaDef) {
+export async function pruneSensitiveData(store: Store, schema: SchemaDef, hasRole: (role: string) => boolean) {
 
-    const cleaner = (obj: any) => {
+    const prune = (obj: any) => {
         // have to first cut out sensitive data before sending
         if (schema.sensitive) {
             for(let s of schema.sensitive) {
@@ -26,8 +26,7 @@ export async function sensitiveDataCleaner(store: Store, hasRole: (role: string)
     };
 
     return {
-        schema,
-        cleaner,
+        prune,
         isCleanRequired: (schema && schema.sensitive && schema.sensitive.length > 0),
     };
 }
