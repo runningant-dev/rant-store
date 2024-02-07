@@ -1,7 +1,7 @@
 import { Change } from "./change";
 export * from "./authToken";
 export * from "./parseSearchQueryString";
-export * from "./sensitiveDataCleaner";
+export * from "./pruneSensitiveData";
 export * from "./change";
 export declare const enum DataType {
     text = 0,
@@ -79,7 +79,6 @@ export interface Store {
     searchAll: (queries: SearchOptions[]) => Promise<any>;
     getChanges: (options: {
         from?: number;
-        since?: string;
     }) => Promise<any>;
     merge: (options: {
         changes: Change[];

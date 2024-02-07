@@ -18,7 +18,7 @@ exports.mapDataType = void 0;
 __exportStar(require("./authToken"), exports);
 // export * from "./sqliteStore";
 __exportStar(require("./parseSearchQueryString"), exports);
-__exportStar(require("./sensitiveDataCleaner"), exports);
+__exportStar(require("./pruneSensitiveData"), exports);
 __exportStar(require("./change"), exports);
 function mapDataType(dt) {
     return (dt === 1 /* DataType.number */ || dt === "number") ? 1 /* DataType.number */ : 0 /* DataType.text */;
