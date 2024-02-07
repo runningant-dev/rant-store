@@ -38,7 +38,7 @@ function pruneSensitiveData(store, schema, hasRole) {
         };
         return {
             prune,
-            isCleanRequired: (schema && schema.sensitive && schema.sensitive.length > 0),
+            isPruneRequired: (schema && schema.sensitive && schema.sensitive.length > 0),
         };
     });
 }

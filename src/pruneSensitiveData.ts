@@ -27,6 +27,6 @@ export async function pruneSensitiveData(store: Store, schema: SchemaDef, hasRol
 
     return {
         prune,
-        isCleanRequired: (schema && schema.sensitive && schema.sensitive.length > 0),
+        isPruneRequired: (schema && schema.sensitive && schema.sensitive.length > 0),
     };
 }
