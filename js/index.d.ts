@@ -59,7 +59,7 @@ export interface Store {
         recreate?: boolean;
         delete?: boolean;
         authToken?: AuthToken;
-    }, changeTracking: TrackingOptions) => void;
+    }, changeTracking?: TrackingOptions) => void;
     get: (options: {
         container: string;
         id: string;
@@ -69,11 +69,12 @@ export interface Store {
         container: string;
         object: ObjectDef;
         authToken?: AuthToken;
-    }, changeTracking: TrackingOptions) => Promise<any>;
+        merge?: boolean;
+    }, changeTracking?: TrackingOptions) => Promise<any>;
     del: (options: {
         container: string;
         id: string;
-    }, changeTracking: TrackingOptions) => Promise<any>;
+    }, changeTracking?: TrackingOptions) => Promise<any>;
     reset: (options: {}) => any;
     search: (options: SearchOptions) => Promise<any>;
     searchAll: (queries: SearchOptions[]) => Promise<any>;

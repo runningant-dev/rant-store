@@ -88,7 +88,7 @@ export interface Store {
             delete?: boolean,
             authToken?: AuthToken,
         },
-        changeTracking: TrackingOptions,
+        changeTracking?: TrackingOptions,
     ) => void,
 
     get: (options: {
@@ -105,8 +105,9 @@ export interface Store {
             container: string, 
             object: ObjectDef,
             authToken?: AuthToken,
+            merge?: boolean, // leave as much of the current object intact as possible and just merge supplied .object changes into what is in db
         },
-        changeTracking: TrackingOptions,
+        changeTracking?: TrackingOptions,
     ) => Promise<any>,
 
     del: (
@@ -114,7 +115,7 @@ export interface Store {
             container: string,
             id: string,
         },
-        changeTracking: TrackingOptions,
+        changeTracking?: TrackingOptions,
     ) => Promise<any>,
 
     reset: (options: {

@@ -5,6 +5,10 @@ const rant_utils_1 = require("rant-utils");
 const arrayCompare_1 = require("./arrayCompare");
 function diff(existing, latest) {
     const result = [];
+    if (existing === null || existing === undefined)
+        existing = {};
+    if (latest === null || latest === undefined)
+        latest = {};
     function check(path, oExisting, oLatest) {
         // keep track of the props added and deleted
         // i.e. could it be that they were just renamed?
