@@ -5,6 +5,9 @@ import { arrayCompare } from "./arrayCompare";
 export function diff(existing: any, latest: any) {
     const result: Change[] = [];
 
+    if (existing === null || existing === undefined) existing = {};
+    if (latest === null || latest === undefined) latest = {};
+
     function check(path: string, oExisting: any, oLatest: any) {
 
         // keep track of the props added and deleted
