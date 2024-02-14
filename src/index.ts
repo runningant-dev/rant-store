@@ -106,6 +106,7 @@ export interface Store {
             object: ObjectDef,
             authToken?: AuthToken,
             merge?: boolean, // leave as much of the current object intact as possible and just merge supplied .object changes into what is in db
+            returnObject?: boolean, // useful for getting newly created object data such as assigned id
         },
         changeTracking?: TrackingOptions,
     ) => Promise<any>,

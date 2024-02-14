@@ -70,6 +70,7 @@ export interface Store {
         object: ObjectDef;
         authToken?: AuthToken;
         merge?: boolean;
+        returnObject?: boolean;
     }, changeTracking?: TrackingOptions) => Promise<any>;
     del: (options: {
         container: string;
