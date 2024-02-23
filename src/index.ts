@@ -93,7 +93,7 @@ export interface Store {
 
     get: (options: {
         container: string, 
-        id: string,
+        ids: string[],
 
         // by default sensitive data is cleaned out because no roles are provided
         // but if roles available they will be checked against the sensitive data specified on the container attributes
@@ -105,7 +105,11 @@ export interface Store {
             container: string, 
             object: ObjectDef,
             authToken?: AuthToken,
-            merge?: boolean, // leave as much of the current object intact as possible and just merge supplied .object changes into what is in db
+            
+			// leave as much of the current object intact as possible and just merge supplied .object changes into what is in db
+			// NOTE: merge only happens at the root level
+			merge?: boolean, 
+
             returnObject?: boolean, // useful for getting newly created object data such as assigned id
         },
         changeTracking?: TrackingOptions,

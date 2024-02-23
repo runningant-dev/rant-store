@@ -47,6 +47,11 @@ export function parseSearchQueryString(qry: string, vals?: any) {
             || s === ">"
         ) return s;
 
+		// s = qry.substring(i, i+2);
+        // if (
+        //     s === "in"
+        // ) return s;
+
         s = qry.substring(i, i+4);
         if (
             s === "like"

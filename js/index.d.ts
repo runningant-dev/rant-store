@@ -62,7 +62,7 @@ export interface Store {
     }, changeTracking?: TrackingOptions) => void;
     get: (options: {
         container: string;
-        id: string;
+        ids: string[];
         roles?: string[];
     }) => Promise<any>;
     set: (options: {
