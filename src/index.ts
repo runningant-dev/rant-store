@@ -61,7 +61,7 @@ export interface TrackingOptions {
     track: boolean,
 }
 
-export type SearchReturnType = "ids" | "array" | "map";
+export type SearchReturnType = "ids" | "array" | "map" | "count";
 
 export interface SearchOptions {
     container: string,

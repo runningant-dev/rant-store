@@ -42,7 +42,7 @@ export declare type Query = Expression[];
 export interface TrackingOptions {
     track: boolean;
 }
-export declare type SearchReturnType = "ids" | "array" | "map";
+export declare type SearchReturnType = "ids" | "array" | "map" | "count";
 export interface SearchOptions {
     container: string;
     qry: Query | string;
