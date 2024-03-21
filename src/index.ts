@@ -95,8 +95,7 @@ export interface Store {
         container: string, 
         ids: string[],
 
-        // by default sensitive data is cleaned out because no roles are provided
-        // but if roles available they will be checked against the sensitive data specified on the container attributes
+		pruneSensitive?: boolean,
         roles?: string[],
     }) => Promise<any>,
 

@@ -63,6 +63,7 @@ export interface Store {
     get: (options: {
         container: string;
         ids: string[];
+        pruneSensitive?: boolean;
         roles?: string[];
     }) => Promise<any>;
     set: (options: {
