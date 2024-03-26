@@ -1,6 +1,6 @@
 {
   "name": "rant-store",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "",
   "main": "./js/index.js",
   "types": "./js/index.d.ts",
