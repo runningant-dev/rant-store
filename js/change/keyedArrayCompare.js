@@ -6,11 +6,14 @@ const diff_1 = require("./diff");
 function keyedArrayCompare(path, left, right, result) {
     // first build index for quicker lookup 
     function initIndex(arr) {
-        const result = {};
+        const map = {};
         for (let i = 0; i < arr.length; i++) {
             const o = arr[i];
-            if (result[o.id]) {
-                // if we hit a duplicate id then can't reliably compare, so just replace the whole array
+            if (
+            // if we hit a duplicate id then can't reliably compare, so just replace the whole array
+            // or if there is no id at all
+            (!o.id)
+                || (map[o.id] !== undefined)) {
                 result.push({
                     type: "prop-update",
                     prop: path,
@@ -18,12 +21,16 @@ function keyedArrayCompare(path, left, right, result) {
                 });
                 return;
             }
-            result[o.id] = i;
+            map[o.id] = i;
         }
-        return result;
+        return map;
     }
     const iLeft = initIndex(left);
+    if (!iLeft)
+        return; // full update
     const iRight = initIndex(right);
+    if (!iRight)
+        return; // full update
     let hadDeletions = false;
     let hadAdditions = false;
     let needsSorting = false;

@@ -5,11 +5,15 @@ import { diff } from "./diff";
 export function keyedArrayCompare(path: string, left: any[], right: any[], result: Change[]) {
 	// first build index for quicker lookup 
 	function initIndex(arr: any[]) {
-		const result: any = {};
+		const map: any = {};
 		for(let i=0;i<arr.length;i++) {
 			const o = arr[i];
-			if (result[o.id]) {
+			if (
 				// if we hit a duplicate id then can't reliably compare, so just replace the whole array
+				// or if there is no id at all
+				(!o.id)
+				|| (map[o.id] !== undefined)
+			) {
 				result.push({
 					type: "prop-update",
 					prop: path,
@@ -17,12 +21,16 @@ export function keyedArrayCompare(path: string, left: any[], right: any[], resul
 				});
 				return;
 			}
-			result[o.id] = i;
+
+			map[o.id] = i;
 		}
-		return result;
+		return map;
 	}
 	const iLeft = initIndex(left);
+	if (!iLeft) return; // full update
+
 	const iRight = initIndex(right);
+	if (!iRight) return; // full update
 	
 	let hadDeletions = false;
 	let hadAdditions = false;
