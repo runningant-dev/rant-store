@@ -54,6 +54,7 @@ export interface SearchOptions {
     returnType?: SearchReturnType;
     roles?: string[];
     sort?: SortColumn[];
+    maxResults?: number;
 }
 export interface Store {
     close: () => void;

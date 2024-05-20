@@ -79,6 +79,7 @@ export interface SearchOptions {
     roles?: string[],
 
 	sort?: SortColumn[],
+	maxResults?: number,
 }
 
 export interface Store {
