@@ -63,6 +63,11 @@ export interface TrackingOptions {
 
 export type SearchReturnType = "ids" | "array" | "map" | "count";
 
+export interface SortColumn {
+	name: string,
+	direction?: "ASC" | "DESC",
+}
+
 export interface SearchOptions {
     container: string,
     qry: Query | string,
@@ -72,6 +77,8 @@ export interface SearchOptions {
     // by default sensitive data is cleaned out because no roles are provided
     // but if roles available they will be checked against the sensitive data specified on the container attributes
     roles?: string[],
+
+	sort?: SortColumn[],
 }
 
 export interface Store {

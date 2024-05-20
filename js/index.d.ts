@@ -43,12 +43,17 @@ export interface TrackingOptions {
     track: boolean;
 }
 export declare type SearchReturnType = "ids" | "array" | "map" | "count";
+export interface SortColumn {
+    name: string;
+    direction?: "ASC" | "DESC";
+}
 export interface SearchOptions {
     container: string;
     qry: Query | string;
     params?: any;
     returnType?: SearchReturnType;
     roles?: string[];
+    sort?: SortColumn[];
 }
 export interface Store {
     close: () => void;
