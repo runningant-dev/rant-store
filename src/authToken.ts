@@ -1,4 +1,3 @@
-import { hash } from "rant-utils";
 
 export interface AuthToken {
     account: string,
