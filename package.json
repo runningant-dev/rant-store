@@ -11,7 +11,7 @@
   "author": "Joel Edwards",
   "license": "MIT",
   "dependencies": {
-    "rant-utils": "^0.0.9"
+    "rant-utils": "^0.0.10"
   },
   "devDependencies": {
     "@types/node": "^20.11.16"
