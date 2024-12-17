@@ -38,6 +38,7 @@ export function parseSearchQueryString(qry: string, vals?: any) {
             || s === "!="
             || s === "<="
             || s === ">="
+			|| s === "in"
         ) return s;
 
         s = qry.substring(i, i+1);

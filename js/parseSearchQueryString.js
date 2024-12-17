@@ -24,7 +24,8 @@ function parseSearchQueryString(qry, vals) {
         if (s === "=="
             || s === "!="
             || s === "<="
-            || s === ">=")
+            || s === ">="
+            || s === "in")
             return s;
         s = qry.substring(i, i + 1);
         if (s === "="
