@@ -143,29 +143,45 @@ function parseSearchQueryString(qry, vals) {
         }
         else if (token === 3 /* Token.Value */) {
             skipWhitespace();
-            const hasQuote = (c === "'");
-            if (hasQuote) {
-                i++;
-                if (i < len)
-                    c = qry[i];
-            }
-            while (i < len) {
-                if ((hasQuote && c === "'")
-                    || (!hasQuote && (isWhitespace(c) || (c === ")")))) {
-                    addCurrentComparison();
-                    break;
+            if (c === "(") {
+                while (i < len) {
+                    value += c;
+                    if (c === ")") {
+                        addCurrentComparison();
+                        break;
+                    }
+                    i++;
+                    if (i < len)
+                        c = qry[i];
                 }
-                value += c;
-                i++;
                 if (i < len)
-                    c = qry[i];
+                    token = 0 /* Token.Unknown */;
             }
-            if (i < len)
-                token = 0 /* Token.Unknown */;
-            if (hasQuote) {
-                i++;
+            else {
+                const hasQuote = (c === "'");
+                if (hasQuote) {
+                    i++;
+                    if (i < len)
+                        c = qry[i];
+                }
+                while (i < len) {
+                    if ((hasQuote && c === "'")
+                        || (!hasQuote && (isWhitespace(c) || (c === ")")))) {
+                        addCurrentComparison();
+                        break;
+                    }
+                    value += c;
+                    i++;
+                    if (i < len)
+                        c = qry[i];
+                }
                 if (i < len)
-                    c = qry[i];
+                    token = 0 /* Token.Unknown */;
+                if (hasQuote) {
+                    i++;
+                    if (i < len)
+                        c = qry[i];
+                }
             }
         }
     }

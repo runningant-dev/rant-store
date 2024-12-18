@@ -168,33 +168,51 @@ export function parseSearchQueryString(qry: string, vals?: any) {
 
         } else if (token === Token.Value) {
             skipWhitespace();
-            const hasQuote = (c === "'");
-            if (hasQuote) {
-                i++;
-                if (i < len) c = qry[i];
-            }
 
-            while (i < len) {
-                if (
-                    (hasQuote && c === "'") 
-                    || (!hasQuote && (isWhitespace(c) || (c === ")")))
-                ) {
-                    addCurrentComparison();
-                    break;
-                }
+			if (c === "(") {
+				while (i < len) {
+					value += c;
 
-                value += c;
+					if (c === ")") {
+						addCurrentComparison();
+						break;
+					}
 
-                i++;
-                if (i < len) c = qry[i];
-            }
+					i++;
+					if (i < len)
+						c = qry[i];
+				}
+				if (i < len) token = Token.Unknown;
 
-            if (i < len) token = Token.Unknown;
+			} else {
+				const hasQuote = (c === "'");
+				if (hasQuote) {
+					i++;
+					if (i < len) c = qry[i];
+				}
 
-            if (hasQuote) {
-                i++;
-                if (i < len) c = qry[i];
-            }
+				while (i < len) {
+					if (
+						(hasQuote && c === "'") 
+						|| (!hasQuote && (isWhitespace(c) || (c === ")")))
+					) {
+						addCurrentComparison();
+						break;
+					}
+
+					value += c;
+
+					i++;
+					if (i < len) c = qry[i];
+				}
+
+				if (i < len) token = Token.Unknown;
+
+				if (hasQuote) {
+					i++;
+					if (i < len) c = qry[i];
+				}
+			}
 
         }
 
