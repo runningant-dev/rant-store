@@ -148,14 +148,14 @@ function parseSearchQueryString(qry, vals) {
                     value += c;
                     if (c === ")") {
                         addCurrentComparison();
+                        i++;
                         break;
                     }
                     i++;
                     if (i < len)
                         c = qry[i];
                 }
-                if (i < len)
-                    token = 0 /* Token.Unknown */;
+                token = 0 /* Token.Unknown */;
             }
             else {
                 const hasQuote = (c === "'");

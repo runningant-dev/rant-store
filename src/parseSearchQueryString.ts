@@ -175,6 +175,7 @@ export function parseSearchQueryString(qry: string, vals?: any) {
 
 					if (c === ")") {
 						addCurrentComparison();
+						i++;
 						break;
 					}
 
@@ -182,7 +183,7 @@ export function parseSearchQueryString(qry: string, vals?: any) {
 					if (i < len)
 						c = qry[i];
 				}
-				if (i < len) token = Token.Unknown;
+				token = Token.Unknown;
 
 			} else {
 				const hasQuote = (c === "'");
