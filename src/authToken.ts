@@ -5,5 +5,7 @@ export interface AuthToken {
     name: string,
     roles: string[],
     time: number,
+
+	impersonating?: boolean,
 }
 
