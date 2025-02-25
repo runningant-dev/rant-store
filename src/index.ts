@@ -145,5 +145,12 @@ export interface Store {
         changes: Change[],
     }) => Promise<any>,
     
+	addEventListener: (options: {
+		handler: (e: any) => void,
+	}) => void,
+	removeEventListener: (options: {
+		handler: (e: any) => void,
+	}) => void,
+
 }
 
